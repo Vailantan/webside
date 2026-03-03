@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You Are My #1 Priority</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Base Styles & Pastel Gradient */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #ffe6f0 0%, #e6e6fa 100%);
+        background-attachment: fixed;
+        color: #4a4a4a;
+        overflow-x: hidden;
+        text-align: center;
+      }
+
+      /* Container for content */
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3 {
+        font-family: "Dancing Script", cursive;
+        color: #d84b7a;
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        font-size: 3.5rem;
+        text-shadow: 2px 2px 4px rgba(216, 75, 122, 0.2);
+        line-height: 1.2;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        font-weight: 300;
+        color: #6a5acd;
+        margin-bottom: 40px;
+      }
+
+      p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      /* The Heartfelt Apology Card */
+      .apology-box {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        margin-bottom: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+      }
+
+      .apology-box p {
+        font-family: "Caveat", cursive;
+        font-size: 1.6rem;
+        color: #555;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+      }
+
+      /* Photo & Interactive Section */
+      .photo-container {
+        margin: 40px 0;
+      }
+
+      .couple-pic {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #fff;
+        box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+        transition: transform 0.3s ease;
+      }
+
+      .couple-pic:hover {
+        transform: scale(1.05);
+      }
+
+      /* The Big Button */
+      .priority-btn {
+        background: linear-gradient(45deg, #ff6b6b, #ff8e8b);
+        color: white;
+        border: none;
+        padding: 18px 35px;
+        font-size: 1.2rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+        animation: pulse 2s infinite;
+        transition: all 0.3s ease;
+        margin: 20px 0;
+      }
+
+      .priority-btn:active {
+        transform: scale(0.95);
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(255, 105, 180, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 105, 180, 0);
+        }
+      }
+
+      /* Cute List Section */
+      .cute-list {
+        text-align: left;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 30px;
+        border-radius: 20px;
+        margin-bottom: 40px;
+      }
+
+      .cute-list h3 {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-top: 0;
+      }
+
+      .cute-list ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .cute-list li {
+        font-family: "Caveat", cursive;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        padding-left: 30px;
+        position: relative;
+        color: #444;
+      }
+
+      .cute-list li::before {
+        content: "💖";
+        position: absolute;
+        left: 0;
+        font-size: 1.2rem;
+      }
+
+      /* Promise Section */
+      .promise-section {
+        font-weight: 600;
+        color: #d84b7a;
+        margin-bottom: 50px;
+        font-size: 1.1rem;
+      }
+
+      /* Footer */
+      footer {
+        font-family: "Caveat", cursive;
+        font-size: 1.4rem;
+        color: #777;
+        padding-bottom: 40px;
+      }
+
+      /* --- Fade-In Animation Classes --- */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 1s ease-out,
+          transform 1s ease-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* --- Background Floating Hearts --- */
+      .bg-heart {
+        position: fixed;
+        bottom: -10vh;
+        color: rgba(255, 182, 193, 0.4);
+        z-index: 1;
+        animation: floatUp linear infinite;
+        user-select: none;
+        pointer-events: none;
+      }
+
+      @keyframes floatUp {
+        to {
+          transform: translateY(-120vh) rotate(360deg);
+        }
+      }
+
+      /* --- JS Confetti/Shower Hearts --- */
+      .shower-heart {
+        position: fixed;
+        top: -10vh;
+        z-index: 9999;
+        animation: fallDown linear forwards;
+        user-select: none;
+        pointer-events: none;
+      }
+
+      @keyframes fallDown {
+        to {
+          transform: translateY(120vh) rotate(360deg);
+        }
+      }
+
+      /* Pop-up Message */
+      .popup-msg {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.5);
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px 40px;
+        border-radius: 50px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        font-family: "Dancing Script", cursive;
+        font-size: 2rem;
+        color: #ff3366;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 10000;
+        pointer-events: none;
+      }
+
+      .popup-msg.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      /* Mobile Adjustments */
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 2.8rem;
+        }
+        .apology-box p {
+          font-size: 1.4rem;
+        }
+        .cute-list li {
+          font-size: 1.3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bg-hearts-container"></div>
+
+    <div class="container">
+      <div class="fade-in">
+        <h1>You Are Always My #1 Priority, Princess 🥺❤️</h1>
+        <div class="subtitle">
+          Even when work tries to steal our time... you win. Every single time.
+        </div>
+      </div>
+
+      <div class="fade-in apology-box">
+        <p>
+          Baby, I was dying for our lazy day tomorrow you in my clothes, snacks,
+          cuddly, zero disturbance. Then this last-minute mandatory HR session
+          dropped today and ruined it.I hate that it happened.
+          <br /><br />
+          But listen: <strong>YOU are my priority.</strong> Not work, not
+          anything else. I made this page just to show you actions > words. You
+          are the first thing I think of every morning and the last at night.
+          Always.
+        </p>
+      </div>
+
+      <div class="fade-in photo-container">
+        <img
+          src="unnamed.jpg"
+          alt="Us"
+          class="couple-pic"
+          onerror="
+            this.src =
+              'https://via.placeholder.com/220/ffd1dc/ff3366?text=Our+Cute+Pic'
+          "
+        />
+        <br />
+        <button class="priority-btn" onclick="triggerShower()">
+          Click to Feel How Much You are My Priority
+        </button>
+      </div>
+
+      <div class="fade-in cute-list">
+        <h3>Quick Proof That You are Always #1</h3>
+        <ul>
+          <li>I think about you first when I wake up</li>
+          <li>I come from work faster just to meet u</li>
+          <li>
+            I still smile thinking about our pottery date ..those are the exact
+            days I want with you forever
+          </li>
+          <li>You are the first and the last choice</li>
+        </ul>
+      </div>
+
+      <div class="fade-in promise-section">
+        <p>
+          Promise sealed: No more last-minute work surprises stealing our time
+          (weekends).
+        </p>
+      </div>
+
+      <footer class="fade-in">
+        Made with all my love while waiting for you to come back.<br />
+        Open this and know you are everything to me.<br />
+        Your forever idiot boyfriend 💕 Vailantan
+      </footer>
+    </div>
+
+    <div id="popup-msg" class="popup-msg">See? 100% you right now ❤️</div>
+
+    <script>
+      // 1. Fade-in on scroll logic
+      document.addEventListener("DOMContentLoaded", () => {
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll(".fade-in").forEach((element) => {
+          observer.observe(element);
+        });
+
+        // Trigger the background hearts right away
+        generateBackgroundHearts();
+      });
+
+      // 2. Generate passive floating background hearts
+      function generateBackgroundHearts() {
+        const container = document.getElementById("bg-hearts-container");
+        const heartIcons = ["🤍", "💕", "🌸", "✨", "💖"];
+        const numHearts = 25;
+
+        for (let i = 0; i < numHearts; i++) {
+          let heart = document.createElement("div");
+          heart.className = "bg-heart";
+          heart.innerText =
+            heartIcons[Math.floor(Math.random() * heartIcons.length)];
+
+          // Randomize positions, sizes, and animation speeds
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.fontSize = Math.random() * 20 + 10 + "px";
+          heart.style.animationDuration = Math.random() * 10 + 10 + "s";
+          heart.style.animationDelay = Math.random() * 5 + "s";
+
+          container.appendChild(heart);
+        }
+      }
+
+      // 3. Button Click Event: Shower of hearts and confetti + Popup
+      function triggerShower() {
+        const emojis = ["❤️", "🥺", "😘", "✨", "💖", "💐"];
+        const numShower = 60;
+
+        for (let i = 0; i < numShower; i++) {
+          let item = document.createElement("div");
+          item.className = "shower-heart";
+          item.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+          // Randomize start position across the top, size, and fall speed
+          item.style.left = Math.random() * 100 + "vw";
+          item.style.fontSize = Math.random() * 30 + 15 + "px";
+          item.style.animationDuration = Math.random() * 2 + 2 + "s";
+
+          document.body.appendChild(item);
+
+          // Clean up DOM after animation completes
+          setTimeout(() => {
+            item.remove();
+          }, 4000);
+        }
+
+        // Show and hide popup message
+        const popup = document.getElementById("popup-msg");
+        popup.classList.add("show");
+        setTimeout(() => {
+          popup.classList.remove("show");
+        }, 3500);
+      }
+    </script>
+  </body>
+</html>
